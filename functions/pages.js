@@ -1,5 +1,4 @@
 async function getPage() {
-  const pageId = '437c3b1e18254a55af569294502ae2ec';
   const response = await notion.pages.retrieve({ page_id: pageId });
   console.log(response.properties.name.title);
 }

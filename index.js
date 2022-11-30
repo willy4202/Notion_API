@@ -7,12 +7,10 @@ const app = express();
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID;
-console.log('🚀 ~ file: index.js:11 ~ databaseId', databaseId);
 
 async function getPage() {
-  const pageId = '437c3b1e18254a55af569294502ae2ec';
   const response = await notion.pages.retrieve({ page_id: pageId });
-  console.log(response.properties.name.title);
+  console.log(response);
 }
 
 async function addItem(text) {
@@ -37,6 +35,9 @@ async function addItem(text) {
     console.error(error.body);
   }
 }
+
+addItem('hi');
+
 const createDatabase = async () => {
   axios
     .request(options)
