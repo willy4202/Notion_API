@@ -1,0 +1,27 @@
+[
+  {
+    "place": "스타벅스",
+    "address": "문래동",
+    "link": "www.starbucks.com"
+  },
+  {
+    "place": "스타벅스2",
+    "address": "익선동",
+    "link": "www.s익선tarbucks.com"
+  },
+  {
+    "place": "감성카페",
+    "address": "북촌",
+    "link": "www.starbucks북촌.com"
+  },
+  {
+    "place": "인스타카페",
+    "address": "용산",
+    "link": "www.용산벅스.com"
+  },
+  {
+    "place": "집앞카페",
+    "address": "화명동",
+    "link": "www.화명동집앞s.com"
+  }
+]

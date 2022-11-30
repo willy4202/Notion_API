@@ -2,6 +2,7 @@ const { Client } = require('@notionhq/client');
 const { response } = require('express');
 const dotenv = require('dotenv').config();
 const express = require('express');
+const axios = require('axios');
 
 const app = express();
 
@@ -60,9 +61,9 @@ async function getDatabases() {
   }
 }
 
-//getDatabases();
+getDatabases();
 
-async function addPagetoDatabase(title, address, url) {
+async function addPagetoDatabase(title, address, url, category) {
   const response = await notion.pages.create({
     parent: {
       database_id: databaseId,
@@ -91,9 +92,20 @@ async function addPagetoDatabase(title, address, url) {
       link: {
         url: url,
       },
+      category: {
+        select: {
+          name: category,
+        },
+      },
     },
   });
   console.log(response);
 }
+addPagetoDatabase('스타벅스', '용산', 'www.starbucks.com', '브랜드카페');
 
-addPagetoDatabase('tom n toms', '서대문구', 'www.tomntoms.com');
+// function getData() {
+//   axios.get('./public/MOCK.json').then((res) => {
+//     console.log(res);
+//   });
+// }
+// getData();
