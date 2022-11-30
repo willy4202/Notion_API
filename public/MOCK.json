@@ -2,26 +2,31 @@
   {
     "place": "스타벅스",
     "address": "문래동",
-    "link": "www.starbucks.com"
+    "link": "www.starbucks.com",
+    "category": "브랜드카페"
   },
   {
     "place": "스타벅스2",
     "address": "익선동",
-    "link": "www.s익선tarbucks.com"
+    "link": "www.s익선tarbucks.com",
+    "category": "브랜드카페"
   },
   {
     "place": "감성카페",
     "address": "북촌",
-    "link": "www.starbucks북촌.com"
+    "link": "www.starbucks북촌.com",
+    "category": "개인카페"
   },
   {
     "place": "인스타카페",
     "address": "용산",
-    "link": "www.용산벅스.com"
+    "link": "www.용산벅스.com",
+    "category": "개인카페"
   },
   {
     "place": "집앞카페",
     "address": "화명동",
-    "link": "www.화명동집앞s.com"
+    "link": "www.화명동집앞s.com",
+    "category": "개인카페"
   }
 ]

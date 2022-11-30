@@ -3,6 +3,7 @@ const { response } = require('express');
 const dotenv = require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
+const fs = require('fs');
 
 const app = express();
 
@@ -55,7 +56,7 @@ async function getDatabases() {
     const response = await notion.databases.retrieve({
       database_id: databaseId,
     });
-    console.log(response);
+    console.log(response.properties);
   } catch (err) {
     console.log(err.body);
   }
@@ -101,11 +102,11 @@ async function addPagetoDatabase(title, address, url, category) {
   });
   console.log(response);
 }
-addPagetoDatabase('스타벅스', '용산', 'www.starbucks.com', '브랜드카페');
+// addPagetoDatabase('스타벅스', '용산', 'www.starbucks.com', '브랜드카페');
 
-// function getData() {
-//   axios.get('./public/MOCK.json').then((res) => {
-//     console.log(res);
-//   });
-// }
+function getData() {
+  axios.get('./public/MOCK.json', (res) => {
+    response.json([]);
+  });
+}
 // getData();
