@@ -36,7 +36,7 @@ async function addItem(text) {
   }
 }
 
-addItem('hi');
+// addItem('hi');
 
 const createDatabase = async () => {
   axios
@@ -59,3 +59,41 @@ async function getDatabases() {
     console.log(err.body);
   }
 }
+
+//getDatabases();
+
+async function addPagetoDatabase(title, address, url) {
+  const response = await notion.pages.create({
+    parent: {
+      database_id: databaseId,
+    },
+
+    properties: {
+      title: {
+        title: [
+          {
+            text: {
+              content: title,
+            },
+          },
+        ],
+      },
+      address: {
+        rich_text: [
+          {
+            type: 'text',
+            text: {
+              content: address,
+            },
+          },
+        ],
+      },
+      link: {
+        url: url,
+      },
+    },
+  });
+  console.log(response);
+}
+
+addPagetoDatabase('tom n toms', '서대문구', 'www.tomntoms.com');
