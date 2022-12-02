@@ -1,14 +1,13 @@
 const { Client } = require('@notionhq/client');
 const { response } = require('express');
 const express = require('express');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config();
 const fs = require('fs');
-// const notionData = require('./notion.json');
 const app = express();
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
+const notionWithoutID = new Client();
 const databaseId = process.env.NOTION_DATABASE_ID;
-console.log(notion);
 
 /** 전체 로직을 파악하기 위한 함수, 형식에 상관없이 title하나가 기재된 페이지를 추가해준다. */
 async function addPagetoNotionDb(text) {
@@ -40,12 +39,11 @@ async function exportDBtoJSON(client, databaseId) {
   const response = await client.databases.query({
     database_id: databaseId,
   });
-  console.log(response.results);
-  JsonStringify = JSON.stringify(response.reults.properties);
-
-  // fs.writeFileSync('notion.json', JsonStringify);
+  response.results.map((x) => console.log(x.properties));
+  JsonStringify = JSON.stringify(response.results);
+  fs.writeFileSync('notion.json', JsonStringify);
 }
-exportDBtoJSON(notion, databaseId);
+// exportDBtoJSON(notion, databaseId);
 
 /** Page 하나를 생성해주는 함수 */
 async function addPagetoDatabase(title, address, url, category) {
@@ -64,6 +62,7 @@ async function addPagetoDatabase(title, address, url, category) {
           },
         ],
       },
+
       address: {
         rich_text: [
           {
@@ -86,14 +85,20 @@ async function addPagetoDatabase(title, address, url, category) {
   });
   console.log(response);
 }
-// addPagetoDatabase('스타23벅스', '용산', 'www.starbucks.com', '브랜드카페');
+// addPagetoDatabase(
+//   '스타벅스',
+//   '용산 어딘가',
+//   'www.starbuckseverywhere.com',
+//   'brand'
+// );
 
 /** json파일을 읽어서 연결된 notion DB로 page를 생성해주는 함수 */
-function postJsonToDB() {
+function postJsonToDB(notion, databaseId) {
+  const notionData = require('./notion.json');
   notionData.map(async (page) => {
     await notion.pages.create({
       parent: {
-        database_id: page.parent.database_id,
+        database_id: databaseId,
       },
       properties: {
         title: {
@@ -118,6 +123,7 @@ function postJsonToDB() {
         link: {
           url: page.properties.link.url,
         },
+
         category: {
           select: {
             name: page.properties.category.select.name,
@@ -127,4 +133,4 @@ function postJsonToDB() {
     });
   });
 }
-// postJsonToDB(notionData);
+postJsonToDB(notion, databaseId);
