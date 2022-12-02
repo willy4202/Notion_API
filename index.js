@@ -1,21 +1,17 @@
 const { Client } = require('@notionhq/client');
 const { response } = require('express');
-const dotenv = require('dotenv').config();
 const express = require('express');
-const axios = require('axios');
+const dotenv = require('dotenv');
 const fs = require('fs');
-
+// const notionData = require('./notion.json');
 const app = express();
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID;
+console.log(notion);
 
-async function getPage() {
-  const response = await notion.pages.retrieve({ page_id: pageId });
-  console.log(response);
-}
-
-async function addItem(text) {
+/** 전체 로직을 파악하기 위한 함수, 형식에 상관없이 title하나가 기재된 페이지를 추가해준다. */
+async function addPagetoNotionDb(text) {
   try {
     const response = await notion.pages.create({
       parent: { database_id: databaseId },
@@ -40,30 +36,18 @@ async function addItem(text) {
 
 // addItem('hi');
 
-const createDatabase = async () => {
-  axios
-    .request(options)
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
+async function exportDBtoJSON(client, databaseId) {
+  const response = await client.databases.query({
+    database_id: databaseId,
+  });
+  console.log(response.results);
+  JsonStringify = JSON.stringify(response.reults.properties);
 
-async function getDatabases() {
-  try {
-    const response = await notion.databases.retrieve({
-      database_id: databaseId,
-    });
-    console.log(response.properties);
-  } catch (err) {
-    console.log(err.body);
-  }
+  // fs.writeFileSync('notion.json', JsonStringify);
 }
+exportDBtoJSON(notion, databaseId);
 
-getDatabases();
-
+/** Page 하나를 생성해주는 함수 */
 async function addPagetoDatabase(title, address, url, category) {
   const response = await notion.pages.create({
     parent: {
@@ -102,11 +86,45 @@ async function addPagetoDatabase(title, address, url, category) {
   });
   console.log(response);
 }
-// addPagetoDatabase('스타벅스', '용산', 'www.starbucks.com', '브랜드카페');
+// addPagetoDatabase('스타23벅스', '용산', 'www.starbucks.com', '브랜드카페');
 
-function getData() {
-  axios.get('./public/MOCK.json', (res) => {
-    response.json([]);
+/** json파일을 읽어서 연결된 notion DB로 page를 생성해주는 함수 */
+function postJsonToDB() {
+  notionData.map(async (page) => {
+    await notion.pages.create({
+      parent: {
+        database_id: page.parent.database_id,
+      },
+      properties: {
+        title: {
+          title: [
+            {
+              text: {
+                content: page.properties.place.title[0].text.content,
+              },
+            },
+          ],
+        },
+        address: {
+          rich_text: [
+            {
+              type: 'text',
+              text: {
+                content: page.properties.address.rich_text[0].text.content,
+              },
+            },
+          ],
+        },
+        link: {
+          url: page.properties.link.url,
+        },
+        category: {
+          select: {
+            name: page.properties.category.select.name,
+          },
+        },
+      },
+    });
   });
 }
-// getData();
+// postJsonToDB(notionData);
