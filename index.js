@@ -95,42 +95,44 @@ async function addPagetoDatabase(title, address, url, category) {
 /** json파일을 읽어서 연결된 notion DB로 page를 생성해주는 함수 */
 function postJsonToDB(notion, databaseId) {
   const notionData = require('./notion.json');
-  notionData.map(async (page) => {
-    await notion.pages.create({
-      parent: {
-        database_id: databaseId,
-      },
-      properties: {
-        title: {
-          title: [
-            {
-              text: {
-                content: page.properties.place.title[0].text.content,
+  Promise.all(
+    notionData.map((page) => {
+      notion.pages.create({
+        parent: {
+          database_id: databaseId,
+        },
+        properties: {
+          title: {
+            title: [
+              {
+                text: {
+                  content: page.properties.place.title[0].text.content,
+                },
               },
-            },
-          ],
-        },
-        address: {
-          rich_text: [
-            {
-              type: 'text',
-              text: {
-                content: page.properties.address.rich_text[0].text.content,
+            ],
+          },
+          address: {
+            rich_text: [
+              {
+                type: 'text',
+                text: {
+                  content: page.properties.address.rich_text[0].text.content,
+                },
               },
-            },
-          ],
-        },
-        link: {
-          url: page.properties.link.url,
-        },
+            ],
+          },
+          link: {
+            url: page.properties.link.url,
+          },
 
-        category: {
-          select: {
-            name: page.properties.category.select.name,
+          category: {
+            select: {
+              name: page.properties.category.select.name,
+            },
           },
         },
-      },
-    });
-  });
+      });
+    })
+  );
 }
 postJsonToDB(notion, databaseId);
