@@ -1,312 +1,16 @@
 [
   {
     "object": "page",
-    "id": "47376077-fb23-4e47-8610-e48f0c22ee31",
-    "created_time": "2022-12-02T08:39:00.000Z",
-    "last_edited_time": "2022-12-02T08:39:00.000Z",
+    "id": "eabca099-55b3-4108-838c-a98084a2f981",
+    "created_time": "2022-12-06T09:42:00.000Z",
+    "last_edited_time": "2022-12-06T09:42:00.000Z",
     "created_by": {
       "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
-    },
-    "archived": false,
-    "properties": {
-      "address": {
-        "id": "O%3DNN",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "잠실", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "잠실",
-            "href": null
-          }
-        ]
-      },
-      "category": {
-        "id": "_x%7Dw",
-        "type": "select",
-        "select": { "id": "<QVY", "name": "브랜드카페", "color": "gray" }
-      },
-      "link": {
-        "id": "%7CCjt",
-        "type": "url",
-        "url": "https://www.twosome.co.kr/main.do"
-      },
-      "place": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "투TJA", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "투TJA",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/TJA-47376077fb234e478610e48f0c22ee31"
-  },
-  {
-    "object": "page",
-    "id": "716752ce-5e70-4755-b69b-2e282700e349",
-    "created_time": "2022-12-02T08:39:00.000Z",
-    "last_edited_time": "2022-12-02T08:39:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
-    },
-    "archived": false,
-    "properties": {
-      "address": {
-        "id": "O%3DNN",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "충현동", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "충현동",
-            "href": null
-          }
-        ]
-      },
-      "category": {
-        "id": "_x%7Dw",
-        "type": "select",
-        "select": { "id": "peuo", "name": "개인카페", "color": "red" }
-      },
-      "link": {
-        "id": "%7CCjt",
-        "type": "url",
-        "url": "https://weseb.com/SJB/board.php?board=sosangin&command=body&no=61317"
-      },
-      "place": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "코끼리 에스프레소", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "코끼리 에스프레소",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/716752ce5e704755b69b2e282700e349"
-  },
-  {
-    "object": "page",
-    "id": "886076dd-654b-45aa-a3f3-04cebff78e51",
-    "created_time": "2022-12-02T08:39:00.000Z",
-    "last_edited_time": "2022-12-02T08:40:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
-    },
-    "archived": false,
-    "properties": {
-      "address": {
-        "id": "O%3DNN",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "익선동", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "익선동",
-            "href": null
-          }
-        ]
-      },
-      "category": {
-        "id": "_x%7Dw",
-        "type": "select",
-        "select": { "id": "peuo", "name": "개인카페", "color": "red" }
-      },
-      "link": {
-        "id": "%7CCjt",
-        "type": "url",
-        "url": "https://www.siksinhot.com/P/1258896"
-      },
-      "place": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "청수당", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "청수당",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/886076dd654b45aaa3f304cebff78e51"
-  },
-  {
-    "object": "page",
-    "id": "29e32b31-384c-4293-a4e3-fb2ae51dfe09",
-    "created_time": "2022-12-02T08:38:00.000Z",
-    "last_edited_time": "2022-12-02T08:40:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
-    },
-    "archived": false,
-    "properties": {
-      "address": {
-        "id": "O%3DNN",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "마포", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "마포",
-            "href": null
-          }
-        ]
-      },
-      "category": {
-        "id": "_x%7Dw",
-        "type": "select",
-        "select": { "id": "<QVY", "name": "브랜드카페", "color": "gray" }
-      },
-      "link": {
-        "id": "%7CCjt",
-        "type": "url",
-        "url": "https://www.starbucks.co.kr/index.do"
-      },
-      "place": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "스타벅스", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "스타벅스",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/29e32b31384c4293a4e3fb2ae51dfe09"
-  },
-  {
-    "object": "page",
-    "id": "2fdc19c8-f7c4-4933-a692-e9da76365161",
-    "created_time": "2022-12-02T08:37:00.000Z",
-    "last_edited_time": "2022-12-02T08:38:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "66125553-1c05-4d8e-a463-de14711bab46"
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
     },
     "cover": null,
     "icon": null,
@@ -367,6 +71,396 @@
         ]
       }
     },
-    "url": "https://www.notion.so/2fdc19c8f7c44933a692e9da76365161"
+    "url": "https://www.notion.so/eabca09955b34108838ca98084a2f981"
+  },
+  {
+    "object": "page",
+    "id": "5845bd93-aea2-49cf-b3c4-fda6a93e4a7c",
+    "created_time": "2022-12-06T09:42:00.000Z",
+    "last_edited_time": "2022-12-06T09:42:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "cover": null,
+    "icon": null,
+    "parent": {
+      "type": "database_id",
+      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
+    },
+    "archived": false,
+    "properties": {
+      "address": {
+        "id": "O%3DNN",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": { "content": "익선동", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "익선동",
+            "href": null
+          }
+        ]
+      },
+      "category": {
+        "id": "_x%7Dw",
+        "type": "select",
+        "select": { "id": "peuo", "name": "개인카페", "color": "red" }
+      },
+      "link": {
+        "id": "%7CCjt",
+        "type": "url",
+        "url": "https://www.siksinhot.com/P/1258896"
+      },
+      "place": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": { "content": "청수당", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "청수당",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/5845bd93aea249cfb3c4fda6a93e4a7c"
+  },
+  {
+    "object": "page",
+    "id": "f96f20f4-1b77-477a-9bf8-08a07e7a2b5b",
+    "created_time": "2022-12-06T09:42:00.000Z",
+    "last_edited_time": "2022-12-06T09:42:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "cover": null,
+    "icon": null,
+    "parent": {
+      "type": "database_id",
+      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
+    },
+    "archived": false,
+    "properties": {
+      "address": {
+        "id": "O%3DNN",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": { "content": "마포", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "마포",
+            "href": null
+          }
+        ]
+      },
+      "category": {
+        "id": "_x%7Dw",
+        "type": "select",
+        "select": { "id": "<QVY", "name": "브랜드카페", "color": "gray" }
+      },
+      "link": {
+        "id": "%7CCjt",
+        "type": "url",
+        "url": "https://www.starbucks.co.kr/index.do"
+      },
+      "place": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": { "content": "스타벅스", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "스타벅스",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/f96f20f41b77477a9bf808a07e7a2b5b"
+  },
+  {
+    "object": "page",
+    "id": "95af8be4-99bb-43cd-ba8c-c4640355c45b",
+    "created_time": "2022-12-06T09:42:00.000Z",
+    "last_edited_time": "2022-12-06T09:42:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "cover": null,
+    "icon": null,
+    "parent": {
+      "type": "database_id",
+      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
+    },
+    "archived": false,
+    "properties": {
+      "address": {
+        "id": "O%3DNN",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": { "content": "충현동", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "충현동",
+            "href": null
+          }
+        ]
+      },
+      "category": {
+        "id": "_x%7Dw",
+        "type": "select",
+        "select": { "id": "peuo", "name": "개인카페", "color": "red" }
+      },
+      "link": {
+        "id": "%7CCjt",
+        "type": "url",
+        "url": "https://weseb.com/SJB/board.php?board=sosangin&command=body&no=61317"
+      },
+      "place": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": { "content": "코끼리 에스프레소", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "코끼리 에스프레소",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/95af8be499bb43cdba8cc4640355c45b"
+  },
+  {
+    "object": "page",
+    "id": "3951426e-246e-4b3b-a3a3-0d7eabe61e7d",
+    "created_time": "2022-12-06T09:42:00.000Z",
+    "last_edited_time": "2022-12-06T09:42:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "cover": null,
+    "icon": null,
+    "parent": {
+      "type": "database_id",
+      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
+    },
+    "archived": false,
+    "properties": {
+      "address": {
+        "id": "O%3DNN",
+        "type": "rich_text",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": { "content": "잠실", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "잠실",
+            "href": null
+          }
+        ]
+      },
+      "category": {
+        "id": "_x%7Dw",
+        "type": "select",
+        "select": { "id": "<QVY", "name": "브랜드카페", "color": "gray" }
+      },
+      "link": {
+        "id": "%7CCjt",
+        "type": "url",
+        "url": "https://www.twosome.co.kr/main.do"
+      },
+      "place": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": { "content": "투TJA", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "투TJA",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/TJA-3951426e246e4b3ba3a30d7eabe61e7d"
+  },
+  {
+    "object": "page",
+    "id": "dd52068f-6b29-4165-bb3e-ecfeffe91e13",
+    "created_time": "2022-12-06T09:38:00.000Z",
+    "last_edited_time": "2022-12-06T09:38:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "cover": null,
+    "icon": null,
+    "parent": {
+      "type": "database_id",
+      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
+    },
+    "archived": false,
+    "properties": {
+      "address": { "id": "O%3DNN", "type": "rich_text", "rich_text": [] },
+      "category": { "id": "_x%7Dw", "type": "select", "select": null },
+      "link": { "id": "%7CCjt", "type": "url", "url": null },
+      "place": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": { "content": "hi", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "hi",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/hi-dd52068f6b294165bb3eecfeffe91e13"
+  },
+  {
+    "object": "page",
+    "id": "9fb9e40a-8991-41ad-8a72-21a2f24c1215",
+    "created_time": "2022-12-06T09:37:00.000Z",
+    "last_edited_time": "2022-12-06T09:37:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "8dde5c24-db83-4da4-ad5a-cfbb6ce72b28"
+    },
+    "cover": null,
+    "icon": null,
+    "parent": {
+      "type": "database_id",
+      "database_id": "f458dfe4-a478-4249-8353-0ff6d09680ee"
+    },
+    "archived": false,
+    "properties": {
+      "address": { "id": "O%3DNN", "type": "rich_text", "rich_text": [] },
+      "category": { "id": "_x%7Dw", "type": "select", "select": null },
+      "link": { "id": "%7CCjt", "type": "url", "url": null },
+      "place": {
+        "id": "title",
+        "type": "title",
+        "title": [
+          {
+            "type": "text",
+            "text": { "content": "hi", "link": null },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "hi",
+            "href": null
+          }
+        ]
+      }
+    },
+    "url": "https://www.notion.so/hi-9fb9e40a899141ad8a7221a2f24c1215"
   }
 ]
