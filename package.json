@@ -15,6 +15,11 @@
     "axios": "^1.2.0",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "iconv": "^3.0.1",
+    "sanitize-html": "^2.7.3"
+  },
+  "devDependencies": {
+    "@types/sanitize-html": "^2.6.2"
   }
 }
