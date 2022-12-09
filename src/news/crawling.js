@@ -18,13 +18,14 @@ const getHtml = async (keyword) => {
 const parsing = async (keyword) => {
   const html = await getHtml(keyword);
   const $ = cheerio.load(html.data);
-  const $articleList = $('li.news_node');
+  const $articleList = $('.news_node').children();
+  console.log($articleList);
 
   let article = [];
-  $articleList.each((idx, node) => {
-    const title = $(node).find('.news_ttl').text();
-    console.log(title);
-  });
+  // $articleList.each((idx, node) => {
+  //   const title = $(node).find('.news_ttl').text();
+  //   console.log(title);
+  // });
 };
 
 module.exports = { getHtml, parsing };

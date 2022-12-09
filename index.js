@@ -17,6 +17,7 @@ const dotenv = require('dotenv').config();
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID;
 const pageId = process.env.NOTION_PAGE_ID;
+const newsDB = process.env.NOTION_NEWS_ID;
 
 const queryOption = {
   // filter: {
@@ -35,7 +36,7 @@ const queryOption = {
 // createBulkPageToDB(notion, databaseId);
 
 // =========== database ===========
-// postQueryDB(notion, databaseId, queryOption);
+postQueryDB(notion, databaseId, queryOption);
 // exportDBtoJSON(notion, databaseId, queryOption);
 
-parsing('하이메디');
+// parsing('하이메디');
