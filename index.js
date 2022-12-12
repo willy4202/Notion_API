@@ -36,7 +36,7 @@ const queryOption = {
 // createBulkPageToDB(notion, databaseId);
 
 // =========== database ===========
-postQueryDB(notion, databaseId, queryOption);
+// postQueryDB(notion, databaseId, queryOption);
 // exportDBtoJSON(notion, databaseId, queryOption);
 
 // parsing('하이메디');
