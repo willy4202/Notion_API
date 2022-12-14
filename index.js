@@ -12,6 +12,7 @@ const {
 const { getPage } = require('@notionhq/client/build/src/api-endpoints');
 const { getHtml, parsing } = require('./src/news/crawling');
 const cheerio = require('cheerio');
+const { itemInDatabase, main } = require('./utils/findChangesAndAction');
 
 const dotenv = require('dotenv').config();
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -41,3 +42,7 @@ const queryOption = {
 // exportDBtoJSON(notion, databaseId, queryOption);
 
 // parsing('하이메디');
+
+// (async () => {
+//   main();
+// })();

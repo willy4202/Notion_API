@@ -10,7 +10,18 @@ let itemInDatabase = {};
 
 async function findChangesAndAction() {
   console.log('Looking for changes in Notion database ');
+  /** 5초마다 연결된 노션 DB의 정보를 가지고 온다 */
   const currItemInDatabase = await getItemFromDatabase();
+
+  for (const [key, value] of Object.entries(currItemInDatabase)) {
+    const page_id = key;
+
+    if (!(page_id in itemInDatabase)) {
+      itemInDatabase[page_id] = value;
+    }
+  }
+  console.log(currItemInDatabase);
+  setTimeout(main, 5000);
 }
 
 async function getItemFromDatabase() {
@@ -37,17 +48,10 @@ async function getItemFromDatabase() {
     const current_page = await notion.request(reqeust_payload);
 
     for (const page of current_page.results) {
-      if (page.properties.place) {
-        items[page.id] = {
-          Place: page.properties.place.title[0].text.content,
-          Category: page.properties.category.select.name,
-        };
-      } else {
-        items[page.id] = {
-          Place: 'no Place',
-          Category: page.properties.category.select.name,
-        };
-      }
+      items[page.id] = {
+        Place: page.properties.place.title[0]?.text.content ?? '미정',
+        Status: page.properties.status.select?.name ?? '폐업',
+      };
     }
     /** page list가 추가로 들어올 것이 있으면, 추가 page 요청 */
     if (current_page.has_more) {
@@ -58,4 +62,17 @@ async function getItemFromDatabase() {
   return items;
 }
 
-findChangesAndAction();
+function main() {
+  findChangesAndAction().catch((err) => console.log(err));
+}
+
+(async () => {
+  itemInDatabase = await getItemFromDatabase();
+  console.log('this is local DB', itemInDatabase);
+  main();
+})();
+
+module.exports = {
+  itemInDatabase,
+  main,
+};
