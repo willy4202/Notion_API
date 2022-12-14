@@ -18,6 +18,13 @@ async function findChangesAndAction() {
 
     if (!(page_id in itemInDatabase)) {
       itemInDatabase[page_id] = value;
+    } else {
+      /** 기존 DB의 status와 5초마다 요청하는 DB를 비교해서 기존 DB를 업데이트함 */
+      if (value.status !== itemInDatabase[page_id].Status) {
+        itemInDatabase[page_id] = {
+          Status: value.status,
+        };
+      }
     }
   }
   console.log(currItemInDatabase);
