@@ -16,6 +16,7 @@ const cheerio = require('cheerio');
 const dotenv = require('dotenv').config();
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID;
+
 const pageId = process.env.NOTION_PAGE_ID;
 const newsDB = process.env.NOTION_NEWS_ID;
 
