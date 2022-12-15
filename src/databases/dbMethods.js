@@ -9,7 +9,7 @@ async function postQueryDB(notion, databaseId, option) {
       filter: option?.filter,
       sort: option?.sort,
     });
-    console.log(response.results.length);
+
     return response;
   } catch (error) {
     console.log(error.body);

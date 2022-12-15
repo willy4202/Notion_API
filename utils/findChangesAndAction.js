@@ -15,14 +15,16 @@ async function findChangesAndAction() {
 
   for (const [key, value] of Object.entries(currItemInDatabase)) {
     const page_id = key;
+    const curr_status = value.Status;
 
     if (!(page_id in itemInDatabase)) {
       itemInDatabase[page_id] = value;
     } else {
       /** 기존 DB의 status와 5초마다 요청하는 DB를 비교해서 기존 DB를 업데이트함 */
-      if (value.status !== itemInDatabase[page_id].Status) {
+      if (curr_status !== itemInDatabase[page_id].Status) {
+        console.log('Status Changed');
         itemInDatabase[page_id] = {
-          Status: value.status,
+          Status: curr_status,
         };
       }
     }
