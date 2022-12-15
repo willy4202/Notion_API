@@ -1,5 +1,6 @@
 const { Client } = require('@notionhq/client');
 const dotenv = require('dotenv');
+const { sendMessageToSpace } = require('./googleChat');
 
 dotenv.config();
 
@@ -22,10 +23,11 @@ async function findChangesAndAction() {
     } else {
       /** 기존 DB의 status와 5초마다 요청하는 DB를 비교해서 기존 DB를 업데이트함 */
       if (curr_status !== itemInDatabase[page_id].Status) {
-        console.log('Status Changed');
         itemInDatabase[page_id] = {
           Status: curr_status,
         };
+        let message = `${value.Place} status changed to ${value.Status}`;
+        sendMessageToSpace(message);
       }
     }
   }
@@ -75,13 +77,14 @@ function main() {
   findChangesAndAction().catch((err) => console.log(err));
 }
 
-(async () => {
+async function init() {
   itemInDatabase = await getItemFromDatabase();
   console.log('this is local DB', itemInDatabase);
   main();
-})();
+}
 
 module.exports = {
   itemInDatabase,
   main,
+  init,
 };
