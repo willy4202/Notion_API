@@ -26,6 +26,7 @@ async function findChangesAndAction() {
         itemInDatabase[page_id] = {
           Status: curr_status,
         };
+        console.log('status change');
         let message = `${value.Place} status changed to ${value.Status}`;
         sendMessageToSpace(message);
       }
