@@ -16,10 +16,12 @@ async function findChangesAndAction() {
 
   for (const [key, value] of Object.entries(currItemInDatabase)) {
     const page_id = key;
+    const curr_place = value.Place;
     const curr_status = value.Status;
 
     if (!(page_id in itemInDatabase)) {
       itemInDatabase[page_id] = value;
+      sendMessageToSpace(`새로운 병원 ${curr_place}(이/가) 추가됐습니다`);
     } else {
       /** 기존 DB의 status와 5초마다 요청하는 DB를 비교해서 기존 DB를 업데이트함 */
       if (curr_status !== itemInDatabase[page_id].Status) {
@@ -27,8 +29,7 @@ async function findChangesAndAction() {
           Status: curr_status,
         };
         console.log('status change');
-        let message = `${value.Place} status changed to ${value.Status}`;
-        sendMessageToSpace(message);
+        sendMessageToSpace(`${value.Place} status changed to ${curr_status}`);
       }
     }
   }
@@ -62,7 +63,7 @@ async function getItemFromDatabase() {
     for (const page of current_page.results) {
       items[page.id] = {
         Place: page.properties.place.title[0]?.text.content ?? '미정',
-        Status: page.properties.status.select?.name ?? '폐업',
+        Status: page.properties.status.select?.name ?? '미정',
       };
     }
     /** page list가 추가로 들어올 것이 있으면, 추가 page 요청 */
