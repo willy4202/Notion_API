@@ -8,38 +8,72 @@ const {
   postQueryDB,
   exportDBtoJSON,
   createDB,
+  retrieveDB,
 } = require('./src/databases/dbMethods');
 const { getPage } = require('@notionhq/client/build/src/api-endpoints');
-const { getHtml, parsing } = require('./src/news/crawling');
-const cheerio = require('cheerio');
-const { itemInDatabase, main, init } = require('./utils/findChangesAndAction');
-const { sendMessageToSpace } = require('./utils/googleChat');
-
+const { init } = require('./utils/findChangesAndAction');
 const dotenv = require('dotenv').config();
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
-const databaseId = process.env.NOTION_DATABASE_ID;
 
-const pageId = process.env.NOTION_PAGE_ID;
-const newsDB = process.env.NOTION_NEWS_ID;
-
-const queryOption = {
-  // filter: {
-  //   property: 'category',
-  //   select: {
-  //     equals: '브랜드카페',
-  //   },
-  // },
-  // sort: [
-  // ],
+const notionTokenMap = {
+  young: process.env.NOTION_TOKEN,
 };
 
-// =========== page ===========
-// retrievePage(notion, pageId);
-// createPage(notion, databaseId, 'hi');
-// createBulkPageToDB(notion, databaseId);
+const notionIdMap = {
+  hospital: {
+    parentPage: process.env.NOTION_PAGE_ID,
+    database: process.env.NOTION_DATABASE_ID,
+  },
+  sample: {
+    parentPage: process.env.NOTION_EXAMPLE_PARENT,
+    database: process.env.NOTION_EXAMPLE_DB,
+  },
+};
 
-// =========== database ===========
-// postQueryDB(notion, databaseId, queryOption);
-// exportDBtoJSON(notion, databaseId, queryOption);
+const pageMethodsMap = {
+  retrieve(pageId) {
+    retrievePage(notion, pageId);
+  },
 
+  create(parentId, text) {
+    createPage(notion, parentId, text);
+  },
+
+  createBulk(dbId) {
+    createBulkPageToDB(notion, dbId);
+  },
+};
+
+const dbMethodsMap = {
+  retrive(dbId) {
+    retrieveDB(notion, dbId);
+  },
+  postQuery(dbId, query) {
+    postQueryDB(notion, dbId, query);
+  },
+
+  exportData(dbId, query) {
+    exportDBtoJSON(notion, dbId, query);
+  },
+};
+
+const option = {
+  filter: {
+    property: 'status',
+    select: {
+      equals: '진료 대기',
+    },
+  },
+  sort: [],
+};
+
+// pageMethodsMap.retrieve(notionIdMap.hospital.parentPage);
+// pageMethodsMap.create(notionIdMap.hospital.parentPage, 'hi');
+// pageMethodsMap.createBulkPageToDB(notionIdMap.hospital.database);
+
+// dbMethodsMap.retrive(notionIdMap.hospital.database);
+// dbMethodsMap.postQuery(notionIdMap.hospital.database);
+// dbMethodsMap.exportData(notionIdMap.hospital.database);
+
+// ======= 구글챗 api =======
 init();
