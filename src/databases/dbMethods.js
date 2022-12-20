@@ -1,15 +1,22 @@
 const fs = require('fs');
 const axios = require('axios');
 
-class NOTION_DB {
-  constructor(notion, databaseId) {
-    this.notion = notion;
-    this.database_id = databaseId;
-  }
+const { Client } = require('@notionhq/client');
+const dotenv = require('dotenv');
+const { refineData } = require('../../utils/refineData');
+dotenv.config();
+
+const notion = new Client({ auth: process.env.NOTION_TOKEN });
+
+async function retrieveDB(databaseId) {
+  const response = await notion.databases.retrieve({ database_id: databaseId });
+  console.log(response);
 }
 
-// ====== query To DB
-async function postQueryDB(notion, databaseId, option) {
+/** DB의 리스트를 받아옴
+ * - query 옵션을 함께 전송해서 filter, sort할 수 있음
+ */
+async function postQueryDB(databaseId, option) {
   try {
     const response = await notion.databases.query({
       database_id: databaseId,
@@ -17,40 +24,29 @@ async function postQueryDB(notion, databaseId, option) {
       sort: option?.sort,
     });
 
-    // response.results.map((x) => console.log(x.properties));
-    // console.log(response.results);
-    return response;
+    const data = await refineData(response);
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(error.body);
   }
 }
 
-// ====== export To DB
-async function exportDBtoJSON(notion, databaseId, option) {
-  const response = await postQueryDB(notion, databaseId, option);
-  const refineRes = [];
-
-  //response.results.map((page) => console.log(page.properties.link.url));
-  response.results.forEach((page) =>
-    refineRes.push({
-      id: page.id,
-      place: page.properties.place.title[0].plain_text,
-      address: page.properties.address.rich_text[0].plain_text,
-      status: page.properties.status.select.name,
-      link: page.properties.link.url,
-    })
+/** List를 받아서 파일에 write함
+ * - query한 결과를 fs로 작성하는 방식
+ */
+async function exportDBtoJSON(databaseId, query) {
+  const response = await postQueryDB(databaseId, query);
+  JsonStringify = await JSON.stringify(response);
+  fs.writeFileSync(
+    `${new Date().toLocaleString('ko-KR')}notion.json`,
+    JsonStringify
   );
-
-  console.log(refineRes);
-
-  JsonStringify = JSON.stringify(response.results);
-  // fs.writeFileSync(
-  //   `${new Date().toLocaleString('ko-KR')}notion.json`,
-  //   JsonStringify
-  // );
 }
 
-// ====== create DB
+/** parentPage의 하위로 DB를 생성함
+ * - 401에러 header나 token을 전달하는 방법을 sdk에서 찾아야함
+ */
 function createDB() {
   axios
     .post('https://api.notion.com/v1/databases', {
@@ -58,9 +54,11 @@ function createDB() {
         accept: 'application/json',
         'Notion-Version': '2022-06-28',
         'content-type': 'application/json',
+        Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
       },
-      body: {
-        parent: '32a93b5989184169bbabf8b5d102b59e',
+      parent: {
+        type: 'page_id',
+        page_id: process.env.NOTION_PAGE_ID,
       },
     })
     .then(function (response) {
@@ -71,9 +69,26 @@ function createDB() {
     });
 }
 
-async function retrieveDB(notion, databaseId) {
-  const response = await notion.databases.retrieve({ database_id: databaseId });
-  console.log(response);
+/** query해서 list 데이터 refine 후 리턴 */
+async function getDatabase(databaseId) {
+  const response = await notion.databases.query({ database_id: databaseId });
+  const responseResults = response.results.map((page) => {
+    return {
+      id: page.id,
+      place: page.properties.place.title[0]?.plain_text,
+      status: page.properties.status.select.name,
+      address: page.properties.address.rich_text[0]?.plain_text,
+    };
+  });
+
+  console.log(responseResults);
+  return responseResults;
 }
 
-module.exports = { postQueryDB, exportDBtoJSON, createDB, retrieveDB };
+module.exports = {
+  postQueryDB,
+  exportDBtoJSON,
+  createDB,
+  retrieveDB,
+  getDatabase,
+};
