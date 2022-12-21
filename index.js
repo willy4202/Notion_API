@@ -58,6 +58,10 @@ const pageMethodsMap = {
 };
 
 const dbMethodsMap = {
+  create(parentId, option) {
+    createDB(parentId, option);
+  },
+
   retrive(dbId) {
     retrieveDB(dbId);
   },
@@ -72,10 +76,6 @@ const dbMethodsMap = {
 
   exportData(dbId, query) {
     exportDBtoJSON(dbId, query);
-  },
-
-  create(parentId, option) {
-    createDB(parentId, option);
   },
 };
 
@@ -93,11 +93,11 @@ const option = {
 // pageMethodsMap.create(notionIdMap.hospital.database, 'hi');
 // pageMethodsMap.createBulk(notionIdMap.hospital.database);
 
+// dbMethodsMap.create(notionIdMap.hospital.parentPage);
 // dbMethodsMap.retrive(notionIdMap.hospital.database);
 // dbMethodsMap.getDbAndRefineData(notionIdMap.hospital.database);
 // dbMethodsMap.postQuery(notionIdMap.hospital.database);
 // dbMethodsMap.exportData(notionIdMap.hospital.database);
-// dbMethodsMap.create();
 
 // ======= 구글챗 api =======
-init();
+// init();

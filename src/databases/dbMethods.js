@@ -1,5 +1,6 @@
 const fs = require('fs');
 const axios = require('axios');
+const sdk = require('api')('@notionapi/v1#9ee3472plaa6f1n9');
 
 const { Client } = require('@notionhq/client');
 const dotenv = require('dotenv');
@@ -33,7 +34,7 @@ async function postQueryDB(databaseId, option) {
 }
 
 /** List를 받아서 파일에 write함
- * - query한 결과를 fs로 작성하는 방식
+ * - query한 결과를 fs로 작성
  */
 async function exportDBtoJSON(databaseId, query) {
   const response = await postQueryDB(databaseId, query);
@@ -47,26 +48,52 @@ async function exportDBtoJSON(databaseId, query) {
 /** parentPage의 하위로 DB를 생성함
  * - 401에러 header나 token을 전달하는 방법을 sdk에서 찾아야함
  */
-function createDB() {
-  axios
-    .post('https://api.notion.com/v1/databases', {
-      headers: {
-        accept: 'application/json',
-        'Notion-Version': '2022-06-28',
-        'content-type': 'application/json',
-        Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
-      },
+async function createDB() {
+  try {
+    notion.databases.create({
       parent: {
         type: 'page_id',
         page_id: process.env.NOTION_PAGE_ID,
       },
-    })
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.error(error);
+
+      title: [
+        {
+          type: 'text',
+          text: {
+            content: '진료 현황 by API',
+            link: null,
+          },
+        },
+      ],
+      properties: {
+        place: {
+          title: {},
+        },
+        status: {
+          select: {
+            options: [
+              {
+                name: '진료 완료',
+                color: 'green',
+              },
+              {
+                name: '진료 대기',
+                color: 'gray',
+              },
+            ],
+          },
+        },
+        address: {
+          rich_text: {},
+        },
+        link: {
+          url: {},
+        },
+      },
     });
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 /** query해서 list 데이터 refine 후 리턴 */

@@ -1,5 +1,3 @@
-// const { default: axios } = require('axios');
-
 async function getDataFromBackend() {
   try {
     const res = await fetch('http://localhost:8000');
