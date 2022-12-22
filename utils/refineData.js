@@ -2,11 +2,11 @@
 async function refineData(response) {
   return (refineRes = response.results.map((page) => {
     return {
-      id: page.id,
-      place: page.properties.place.title[0].plain_text,
-      address: page.properties.address.rich_text[0].plain_text,
-      status: page.properties.status.select.name,
-      link: page.properties.link.url,
+      id: page?.id,
+      place: page.properties?.place.title[0].plain_text,
+      address: page.properties?.address.rich_text[0].plain_text,
+      status: page.properties?.status.select.name,
+      link: page.properties?.link.url,
     };
   }));
 }

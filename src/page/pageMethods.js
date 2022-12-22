@@ -47,8 +47,8 @@ async function createPage(id, text) {
  * 2. bulk page는 api에서 지원하지 않음, pageMethods의 createPage를 데이터 수만큼 실행시킨다.
  * 현재는 진료 현황 DB에 맞춰져 있음  */
 function createBulkPageToDB(databaseId) {
-  const notionData = require('../../2022. 12. 20. 오후 4:35:16notion.json');
-  notionData.map(async (page) => {
+  const file = require('../../2022. 12. 20. 오후 4:35:16notion.json');
+  file.map(async (page) => {
     await notion.pages.create({
       parent: {
         database_id: databaseId,
@@ -87,4 +87,15 @@ function createBulkPageToDB(databaseId) {
   });
 }
 
-module.exports = { retrievePage, createPage, createBulkPageToDB };
+async function updatePage(pageId, text) {
+  notion.pages.update({
+    page_id: pageId,
+    properties: {
+      place: {
+        title: [{ text: { content: text } }],
+      },
+    },
+  });
+}
+
+module.exports = { retrievePage, createPage, createBulkPageToDB, updatePage };

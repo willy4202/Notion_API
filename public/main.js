@@ -1,7 +1,6 @@
 async function getDataFromBackend() {
   try {
     const res = await fetch('http://localhost:8000');
-
     console.log(res);
     return res;
   } catch (err) {
