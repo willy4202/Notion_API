@@ -5,35 +5,37 @@ const { sendMessageToSpace } = require('./googleChat');
 dotenv.config();
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
-const database_id = process.env.NOTION_DATABASE_ID;
+const database_id = process.env.NOTION_DATABASE_ID_BY_API;
 
 let itemInDatabase = {};
 
 async function findChangesAndAction() {
-  console.log('Looking for changes in Notion database ');
-  /** 5초마다 연결된 노션 DB의 정보를 가지고 온다 */
+  console.log(
+    '============== Looking for changes in Notion database =============='
+  );
   const currItemInDatabase = await getItemFromDatabase();
 
   for (const [key, value] of Object.entries(currItemInDatabase)) {
     const page_id = key;
-    const curr_place = value.Place;
-    const curr_status = value.Status;
-
+    const curr_place = value.place;
+    const curr_status = value.status;
     if (!(page_id in itemInDatabase)) {
       itemInDatabase[page_id] = value;
       sendMessageToSpace(`새로운 병원 ${curr_place}(이/가) 추가됐습니다`);
+    }
+    if (!Object.keys(itemInDatabase).includes(page_id)) {
+      console.log(page_id);
     } else {
-      /** 기존 DB의 status와 5초마다 요청하는 DB를 비교해서 기존 DB를 업데이트함 */
-      if (curr_status !== itemInDatabase[page_id].Status) {
+      if (curr_status !== itemInDatabase[page_id].status) {
         itemInDatabase[page_id] = {
-          Status: curr_status,
+          status: curr_status,
         };
         console.log('status change');
-        sendMessageToSpace(`${value.Place} status changed to ${curr_status}`);
+        sendMessageToSpace(`${value.place} status changed to ${curr_status}`);
       }
     }
   }
-  console.log(currItemInDatabase);
+  console.log(itemInDatabase);
   setTimeout(main, 5000);
 }
 
@@ -62,8 +64,8 @@ async function getItemFromDatabase() {
 
     for (const page of current_page.results) {
       items[page.id] = {
-        Place: page.properties.place.title[0]?.text.content ?? '미정',
-        Status: page.properties.status.select?.name ?? '미정',
+        place: page.properties.place.title[0]?.text.content ?? '미정',
+        status: page.properties.status.select?.name ?? '미정',
       };
     }
     /** page list가 추가로 들어올 것이 있으면, 추가 page 요청 */
@@ -81,7 +83,6 @@ function main() {
 
 async function init() {
   itemInDatabase = await getItemFromDatabase();
-  console.log('this is local DB', itemInDatabase);
   main();
 }
 

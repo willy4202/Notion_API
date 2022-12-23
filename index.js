@@ -30,6 +30,7 @@ const notionIdMap = {
   hospital: {
     parentPage: process.env.NOTION_PAGE_ID,
     database: process.env.NOTION_DATABASE_ID_BY_LOCAL,
+
     sampleDb: process.env.NOTION_DATABASE_ID_BY_API,
   },
   sample: {
@@ -79,13 +80,13 @@ const pageMethodsMap = {
 };
 
 const option = {
-  filter: {
-    property: 'status',
-    select: {
-      equals: '진료 대기',
-    },
-  },
-  sort: [],
+  // filter: {
+  //   property: 'status',
+  //   select: {
+  //     equals: '진료 대기',
+  //   },
+  // },
+  // sort: [],
 };
 
 // =============== DB ===============
@@ -94,15 +95,15 @@ const option = {
 // dbMethodsMap.create(notionIdMap.hospital.parentPage);
 // === R ===
 // dbMethodsMap.retrive(notionIdMap.hospital.sampleDb);
-//dbMethodsMap.postQuery(notionIdMap.hospital.sampleDb, option);
-//dbMethodsMap.exportData(notionIdMap.hospital.database);
+// dbMethodsMap.postQuery(notionIdMap.hospital.sampleDb, option);
+// dbMethodsMap.exportData(notionIdMap.hospital.sampleDb, option);
 // === U ===
 // dbMethodsMap.update(notionIdMap.hospital.sampleDb);
 // === D ===
 
 // =============== Page ===============
 // === C ===
-//pageMethodsMap.create(notionIdMap.hospital.sampleDb, 'page by API');
+// pageMethodsMap.create(notionIdMap.hospital.sampleDb, 'page by API');
 // pageMethodsMap.createBulk(notionIdMap.hospital.sampleDb);
 
 // === R ===
@@ -113,4 +114,4 @@ const option = {
 // pageMethodsMap.update('c99b89285b9549aab46fa30bae540255', '타이틀 변경');
 
 // ======= 구글챗 api =======
-// init();
+// init(notionIdMap.hospital.sampleDb);

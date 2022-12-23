@@ -9,6 +9,7 @@ const { content } = require('googleapis/build/src/apis/content');
 dotenv.config();
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
+
 /** parentPage의 하위로 DB를 생성함
  * - 401에러 header나 token을 전달하는 방법을 sdk에서 찾아야함
  */
@@ -91,8 +92,8 @@ async function postQueryDB(databaseId, option) {
 async function exportDBtoJSON(databaseId, query) {
   const response = await postQueryDB(databaseId, query);
   JsonStringify = await JSON.stringify(response);
-  fs.writeFileSync(`notion.json`, JsonStringify);
-  console.log('file created!');
+  fs.writeFileSync(`1notion.json`, JsonStringify);
+  return;
 }
 
 async function updateDB(databaseId) {
