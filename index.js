@@ -1,5 +1,4 @@
 const express = require('express');
-const { Client } = require('@notionhq/client');
 const {
   createPage,
   createBulkPageToDB,
@@ -13,10 +12,9 @@ const {
   retrieveDB,
   updateDB,
 } = require('./src/databases/dbMethods');
-const { getPage } = require('@notionhq/client/build/src/api-endpoints');
+
 const { init } = require('./utils/findChangesAndAction');
 const dotenv = require('dotenv').config();
-const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
 const port = 8000;
 const app = express();
@@ -37,16 +35,6 @@ const notionIdMap = {
     parentPage: process.env.NOTION_EXAMPLE_PARENT,
     database: process.env.NOTION_EXAMPLE_DB,
   },
-};
-
-const option = {
-  // filter: {
-  //   property: 'status',
-  //   select: {
-  //     equals: '진료 대기',
-  //   },
-  // },
-  // sort: [],
 };
 
 const dbMethodsMap = {
@@ -89,6 +77,16 @@ const pageMethodsMap = {
   },
 };
 
+const option = {
+  // filter: {
+  //   property: 'status',
+  //   select: {
+  //     equals: '진료 대기',
+  //   },
+  // },
+  // sort: [],
+};
+
 // =============== DB ===============
 
 // === C ===
@@ -98,6 +96,7 @@ const pageMethodsMap = {
 // dbMethodsMap.retrive(notionIdMap.hospital.sampleDb);
 // dbMethodsMap.postQuery(notionIdMap.hospital.sampleDb, option);
 // dbMethodsMap.exportData(notionIdMap.hospital.sampleDb, option);
+
 // === U ===
 // dbMethodsMap.update(notionIdMap.hospital.sampleDb, '진료현황 by API');
 
@@ -108,7 +107,6 @@ const pageMethodsMap = {
 
 // === R ===
 //  pageMethodsMap.retrieve(notionIdMap.hospital.parentPage);
-// pageMethodsMap.retrieve('c99b89285b9549aab46fa30bae540255');
 
 // === U ===
 // pageMethodsMap.update(`원하는 페이지 id 넣어주세요`, '타이틀 변경');

@@ -77,7 +77,7 @@ async function postQueryDB(databaseId, option) {
       filter: option?.filter,
       sort: option?.sort,
     });
-    response.results.map(x=>console.log(x.properties))
+    response.results.map((x) => console.log(x.properties));
     const data = await refineData(response);
     // console.log(data);
     return data;
@@ -92,11 +92,11 @@ async function postQueryDB(databaseId, option) {
 async function exportDBtoJSON(databaseId, query) {
   const response = await postQueryDB(databaseId, query);
   JsonStringify = await JSON.stringify(response);
-  fs.writeFileSync(`1notion.json`, JsonStringify);
+  fs.writeFileSync(`notion.json`, JsonStringify);
   return;
 }
 
-async function updateDB(databaseId,text) {
+async function updateDB(databaseId, text) {
   const response = await notion.databases.update({
     database_id: databaseId,
     title: [
