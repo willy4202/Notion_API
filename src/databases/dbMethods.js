@@ -64,6 +64,7 @@ async function createDB() {
 async function retrieveDB(databaseId) {
   const response = await notion.databases.retrieve({ database_id: databaseId });
   console.log(response);
+  return response;
 }
 
 /** DB의 리스트를 받아옴
@@ -76,10 +77,9 @@ async function postQueryDB(databaseId, option) {
       filter: option?.filter,
       sort: option?.sort,
     });
-
-    /** 병원 데이터베이스에 리스트가 있을 경우*/
+    response.results.map(x=>console.log(x.properties))
     const data = await refineData(response);
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log(error.body);
@@ -96,13 +96,13 @@ async function exportDBtoJSON(databaseId, query) {
   return;
 }
 
-async function updateDB(databaseId) {
+async function updateDB(databaseId,text) {
   const response = await notion.databases.update({
     database_id: databaseId,
     title: [
       {
         text: {
-          content: 'changed Title',
+          content: text,
         },
       },
     ],

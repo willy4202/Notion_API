@@ -20,6 +20,7 @@ const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
 const port = 8000;
 const app = express();
+
 app.use(express.static('public'));
 
 app.listen(port, () => {
@@ -30,13 +31,22 @@ const notionIdMap = {
   hospital: {
     parentPage: process.env.NOTION_PAGE_ID,
     database: process.env.NOTION_DATABASE_ID_BY_LOCAL,
-
     sampleDb: process.env.NOTION_DATABASE_ID_BY_API,
   },
   sample: {
     parentPage: process.env.NOTION_EXAMPLE_PARENT,
     database: process.env.NOTION_EXAMPLE_DB,
   },
+};
+
+const option = {
+  // filter: {
+  //   property: 'status',
+  //   select: {
+  //     equals: '진료 대기',
+  //   },
+  // },
+  // sort: [],
 };
 
 const dbMethodsMap = {
@@ -52,54 +62,44 @@ const dbMethodsMap = {
     postQueryDB(dbId, query);
   },
 
-  exportData(dbId, query) {
-    exportDBtoJSON(dbId, query);
+  update(dbId, text) {
+    updateDB(dbId, text);
   },
 
-  update(dbId) {
-    updateDB(dbId);
+  exportData(dbId, query) {
+    exportDBtoJSON(dbId, query);
   },
 };
 
 const pageMethodsMap = {
-  retrieve(pageId) {
-    retrievePage(pageId);
-  },
-
   create(parentId, text) {
     createPage(parentId, text);
   },
 
-  createBulk(dbId) {
-    createBulkPageToDB(dbId);
+  retrieve(pageId) {
+    retrievePage(pageId);
   },
 
   update(pageId, text) {
     updatePage(pageId, text);
   },
-};
 
-const option = {
-  // filter: {
-  //   property: 'status',
-  //   select: {
-  //     equals: '진료 대기',
-  //   },
-  // },
-  // sort: [],
+  createBulk(dbId) {
+    createBulkPageToDB(dbId);
+  },
 };
 
 // =============== DB ===============
 
 // === C ===
 // dbMethodsMap.create(notionIdMap.hospital.parentPage);
+
 // === R ===
 // dbMethodsMap.retrive(notionIdMap.hospital.sampleDb);
 // dbMethodsMap.postQuery(notionIdMap.hospital.sampleDb, option);
 // dbMethodsMap.exportData(notionIdMap.hospital.sampleDb, option);
 // === U ===
-// dbMethodsMap.update(notionIdMap.hospital.sampleDb);
-// === D ===
+// dbMethodsMap.update(notionIdMap.hospital.sampleDb, '진료현황 by API');
 
 // =============== Page ===============
 // === C ===
@@ -111,7 +111,7 @@ const option = {
 // pageMethodsMap.retrieve('c99b89285b9549aab46fa30bae540255');
 
 // === U ===
-// pageMethodsMap.update('c99b89285b9549aab46fa30bae540255', '타이틀 변경');
+// pageMethodsMap.update(`원하는 페이지 id 넣어주세요`, '타이틀 변경');
 
 // ======= 구글챗 api =======
 // init(notionIdMap.hospital.sampleDb);
