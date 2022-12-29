@@ -9,11 +9,34 @@
   </head>
   <body>
     <div id="banner">Notion API Database Test</div>
-
     <div id="wrapper">
       <div id="container"></div>
     </div>
 
-    <script type="module" src="main.js"></script>
+    <div id="addHospitalFormContainer">
+      <button id="closeFormButton">Close</button>
+      <form method="POST" action="/submit-form" id="addHospitalForm">
+        <h1 id="formTitle">Add a new Hospital to your database</h1>
+        <input
+          type="text"
+          name="place"
+          placeholder="Insert hospital name"
+          class="inputField"
+          required
+        />
+        <input
+          type="text"
+          name="address"
+          placeholder="Insert hospital address"
+          class="inputField"
+          required
+        />
+        <input type="submit" id="submitFormInput" />
+      </form>
+    </div>
+
+    <button id="newButton">Add a new Hospital</button>
+
+    <script type="module" src="./main.js"></script>
   </body>
 </html>

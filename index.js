@@ -16,7 +16,7 @@ const {
 const { init } = require('./utils/findChangesAndAction');
 const dotenv = require('dotenv').config();
 
-const port = 8000;
+const port = 8001;
 const app = express();
 
 app.use(express.static('public'));
@@ -88,7 +88,6 @@ const option = {
 };
 
 // =============== DB ===============
-
 // === C ===
 // dbMethodsMap.create(notionIdMap.hospital.parentPage);
 
@@ -112,4 +111,4 @@ const option = {
 // pageMethodsMap.update(`원하는 페이지 id 넣어주세요`, '타이틀 변경');
 
 // ======= 구글챗 api =======
-// init(notionIdMap.hospital.sampleDb);
+init(notionIdMap.hospital.sampleDb);

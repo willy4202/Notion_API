@@ -21,7 +21,7 @@ async function findChangesAndAction() {
     const curr_status = value.status;
     if (!(page_id in itemInDatabase)) {
       itemInDatabase[page_id] = value;
-      sendMessageToSpace(`새로운 병원 ${curr_place}(이/가) 추가됐습니다`);
+      sendMessageToSpace(`${curr_place}(이/가) 추가됐습니다`);
     }
     if (!Object.keys(itemInDatabase).includes(page_id)) {
       console.log(page_id);

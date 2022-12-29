@@ -39,7 +39,7 @@ html {
   gap: 20px;
 }
 
-.userContainer {
+.hosptialContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,4 +47,94 @@ html {
 
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 10px;
+}
+
+#newButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  padding: 10px 20px;
+
+  background-color: #ef4444;
+  color: white;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 4px;
+}
+
+#addHospitalFormContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(108, 122, 137, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+#closeFormButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  padding: 10px 20px;
+
+  background-color: black;
+  color: white;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 4px;
+}
+
+#formTitle {
+  margin-bottom: 40px;
+}
+
+#addHospitalForm {
+  padding: 50px 100px;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+}
+
+#addHospitalForm input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputField {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+
+  border: 1px solid #b3b3b3;
+  border-radius: 4px;
+}
+
+#submitFormInput {
+  padding: 10px 20px;
+  margin-bottom: none;
+
+  background-color: #ef4444;
+  color: white;
+  font-weight: bold;
+
+  border: 1px solid #ef4444;
+  border-radius: 4px;
 }
