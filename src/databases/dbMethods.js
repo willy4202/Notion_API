@@ -92,7 +92,7 @@ async function postQueryDB(databaseId, option) {
 async function exportDBtoJSON(databaseId, query) {
   const response = await postQueryDB(databaseId, query);
   JsonStringify = await JSON.stringify(response);
-  fs.writeFileSync(`notion.json`, JsonStringify);
+  fs.writeFileSync(`test1.json`, JsonStringify);
   return;
 }
 

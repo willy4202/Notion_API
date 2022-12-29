@@ -111,4 +111,4 @@ const option = {
 // pageMethodsMap.update(`원하는 페이지 id 넣어주세요`, '타이틀 변경');
 
 // ======= 구글챗 api =======
-init(notionIdMap.hospital.sampleDb);
+init();
