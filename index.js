@@ -31,14 +31,20 @@ app.use(
 );
 
 app.get('/data', async (req, res) => {
-  const data = await getDatabase();
+  const data = await getDatabase(notionIdMap.hospital.sampleDb);
   res.json(data);
 });
 
 app.post('/submit-form', async (req, res) => {
   const place = req.body.place;
   const address = req.body.address;
-  await createPageByClient(place, address);
+  await createPageByClient(place, address, notionIdMap.hospital.sampleDb);
+  res.redirect('/');
+  res.end();
+});
+
+app.post('./submit-bulk-page', async (req, res) => {
+  await pageMethodsMap.createBulk(notionIdMap.hospital.sampleDb);
   res.redirect('/');
   res.end();
 });
@@ -121,7 +127,7 @@ const option = {
 // dbMethodsMap.exportData(notionIdMap.hospital.sampleDb, option);
 
 // === U ===
-// dbMethodsMap.update(notionIdMap.hospital.sampleDb, '진료현황 by API');
+// dbMethodsMap.update(notionIdMap.hospital.sampleDb, 'Title Changed');
 
 // =============== Page ===============
 // === C ===

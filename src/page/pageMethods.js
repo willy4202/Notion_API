@@ -34,7 +34,7 @@ async function createPage(id, text) {
 
 function createBulkPageToDB(databaseId) {
   const file = require('../../notion.json');
-  file.map(async (page) => {
+  const res = file.map(async (page) => {
     await notion.pages.create({
       parent: {
         database_id: databaseId,
@@ -71,6 +71,7 @@ function createBulkPageToDB(databaseId) {
       },
     });
   });
+  return res;
 }
 
 async function updatePage(pageId, text) {
@@ -84,10 +85,10 @@ async function updatePage(pageId, text) {
   });
 }
 
-const createPageByClient = async (place_name, address) => {
+const createPageByClient = async (place_name, address, dbId) => {
   const response = await notion.pages.create({
     parent: {
-      database_id: process.env.NOTION_DATABASE_ID_BY_API,
+      database_id: dbId,
     },
     properties: {
       place: {

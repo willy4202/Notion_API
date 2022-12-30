@@ -91,7 +91,6 @@ async function exportDBtoJSON(databaseId, query) {
   const response = await postQueryDB(databaseId, query);
   JsonStringify = await JSON.stringify(response);
   fs.writeFileSync(`test1.json`, JsonStringify);
-  return;
 }
 
 async function updateDB(databaseId, text) {
@@ -108,9 +107,9 @@ async function updateDB(databaseId, text) {
   console.log(response);
 }
 
-const getDatabase = async () => {
+const getDatabase = async (dbId) => {
   const response = await notion.databases.query({
-    database_id: process.env.NOTION_DATABASE_ID_BY_API,
+    database_id: dbId,
   });
   const refinedResponse = response.results.map((page) => {
     return {
