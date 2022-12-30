@@ -1,11 +1,9 @@
 const fs = require('fs');
-const axios = require('axios');
-const sdk = require('api')('@notionapi/v1#9ee3472plaa6f1n9');
 
 const { Client } = require('@notionhq/client');
 const dotenv = require('dotenv');
 const { refineData } = require('../../utils/refineData');
-const { content } = require('googleapis/build/src/apis/content');
+
 dotenv.config();
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -110,10 +108,27 @@ async function updateDB(databaseId, text) {
   console.log(response);
 }
 
+const getDatabase = async () => {
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_DATABASE_ID_BY_API,
+  });
+  const refinedResponse = response.results.map((page) => {
+    return {
+      id: page.id,
+      place: page.properties.place.title[0]?.plain_text,
+      address: page.properties.address.rich_text[0]?.plain_text,
+      status: page.properties.status.select?.name,
+      link: page.properties.link?.url,
+    };
+  });
+  return refinedResponse;
+};
+
 module.exports = {
   createDB,
   retrieveDB,
   postQueryDB,
   exportDBtoJSON,
   updateDB,
+  getDatabase,
 };

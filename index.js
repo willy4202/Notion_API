@@ -4,6 +4,7 @@ const {
   createBulkPageToDB,
   retrievePage,
   updatePage,
+  createPageByClient,
 } = require('./src/page/pageMethods');
 const {
   postQueryDB,
@@ -11,19 +12,42 @@ const {
   createDB,
   retrieveDB,
   updateDB,
+  getDatabase,
 } = require('./src/databases/dbMethods');
 
 const { init } = require('./utils/findChangesAndAction');
+const { query } = require('express');
 const dotenv = require('dotenv').config();
 
-const port = 8001;
+const port = 8000;
 const app = express();
 
 app.use(express.static('public'));
 
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+
+app.get('/data', async (req, res) => {
+  const data = await getDatabase();
+  res.json(data);
+});
+
+app.post('/submit-form', async (req, res) => {
+  const place = req.body.place;
+  const address = req.body.address;
+  await createPageByClient(place, address);
+  res.redirect('/');
+  res.end();
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+app.post;
 
 const notionIdMap = {
   hospital: {
