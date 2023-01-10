@@ -127,7 +127,7 @@ const option = {
 // dbMethodsMap.exportData(notionIdMap.hospital.sampleDb, option);
 
 // === U ===
-// dbMethodsMap.update(notionIdMap.hospital.sampleDb, 'Title Changed');
+// dbMethodsMap.update(notionIdMap.hospital.sampleDb, '병원 진료 현황');
 
 // =============== Page ===============
 // === C ===
